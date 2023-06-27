@@ -45,11 +45,34 @@ Control_T_Mean <-rowMeans(Control_T)
 
 Fold_change <- Treatment_T_Mean-Control_T_Mean
 
->+2= Up-regulated
-<-2= Down-regulated
-Up-regulated gene +
-Down-regulated gene -
+	>+2= Up-regulated
+	<-2= Down-regulated
+	Up-regulated gene +
+	Down-regulated gene -
 
 # MA Plots
+
+# Install a library called ggpubr
+
+	if(!require(devtools)) install.packages("devtools")
+	devtools::install_github("kassambara/ggpubr")
+
+library(ggpubr)
+
+
+# M = log2(x/y) and A = (log2(x) + log2(y))/2, where x and y are respectively the mean of the two groups being compared.
+
+M = Treatment_T_Mean/Control_T_Mean
+
+A = (Treatment_T_Mean+Control_T_Mean)/2
+
+# use variables M and A to generate the MA plot
+
+ma.plot( M,A, cex=1 )
+ 
+# cex is an argument which defines the thickness of the plotting dot
+
+
+
 
 
